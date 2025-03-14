@@ -1,5 +1,7 @@
 from typing import List, Tuple, Dict, Optional, Union
 
+# def function_name(value: type) -> return_type:
+
 def add(a: int, b: int) -> int:
     return a + b
 
@@ -13,10 +15,13 @@ def get_person_info() -> Tuple[str, int]:
 def get_student_score() -> Dict[str, float]:
     return { "gaeun" : "100.0" }
 
+# Optional[type]은 type 또는 None을 가질 수 있는 타입
 def find_user(user_id: int) -> Optional[str]:
     users = {1 : "a", 2 : "b", 3: "c"}
     return users.get(user_id)
 
+# Union[type1, type2] type1 또는 type2 만 가능
+# 둘 중 어디에도 해당하지 않는다면 TypeError 발생
 def function(value: Union[str, int]) -> int:
     if (isinstance(value, int)):
         return value ** 2
