@@ -31,12 +31,17 @@ def get_champion(champion_id: int) -> Union[Champion, str]:
     # 하지만 이 코드는 없어도 예외가 발생하면 안됨!!
     # 예외방지를 위하여 기본값 설정가능
     # 구현하기2 : next() + 예외방지설정
-    # champion = next((champion for champion in _champions if champion.id == champion_id), None)
-    # if champion is None:
-    #     return "Champion not found"
-    # return champion
+    champion = next((champion for champion in _champions if champion.id == champion_id), None)
+    if champion is None:
+        return "Champion not found"
+    return champion
 
     # 구현하기3 : 리스트 컴프리핸션
     # 해당 id 가 존재하지 않는 경우 사용이 어려움
-    champion = [champion for champion in _champions if champion.id == champion_id][0]
-    return champion
+    # champion = [champion for champion in _champions if champion.id == champion_id][0]
+    # return champion
+
+    # 구현하기4 : filter()
+    # 해당 id 가 존재하지 않는 경우 사용이 어려움
+    # champion_test = filter(lambda champion: champion.id == champion_id, _champions)
+    # print(champion_test)
