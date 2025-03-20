@@ -16,7 +16,21 @@ cur.execute("""
 # -> 오류 방지
 
 # 값 추가하기 (insert)
-cur.execute("insert into person(name, age) values (?, ?)", ("gaeun", 18))
-name = "eunbb" ; age = 22
-cur.execute(f'insert into person(name, age) values ("{name}", {age})')
+# cur.execute("insert into person(name, age) values (?, ?)", ("gaeun", 18))
+# name = "eunbb" ; age = 22
+# cur.execute(f'insert into person(name, age) values ("{name}", {age})')
+# con.commit()
+
+# # 값 확인하기 (select)
+# cur.execute("select * from person")
+# rows = cur.fetchall()
+# # rows 의 타입: list
+# print(type(rows))
+# for row in rows:
+#     print(row)
+
+# 값 수정하기 (update)
+query = "update person set name = :name, age = :age where id = :id"
+param = {"id": 2, "name": "gyul", "age": 16}
+cur.execute(query, param)
 con.commit()
