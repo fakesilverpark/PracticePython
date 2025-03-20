@@ -29,8 +29,11 @@ cur.execute("""
 # for row in rows:
 #     print(row)
 
-# 값 수정하기 (update)
-query = "update person set name = :name, age = :age where id = :id"
-param = {"id": 2, "name": "gyul", "age": 16}
-cur.execute(query, param)
+# # 값 수정하기 (update)
+# query = "update person set name = :name, age = :age where id = :id"
+# param = {"id": 2, "name": "gyul", "age": 16}
+# cur.execute(query, param)
+# con.commit()
+
+cur.execute("delete from person where name = :name", {"name": "gyul"})
 con.commit()
