@@ -35,5 +35,11 @@ cur.execute("""
 # cur.execute(query, param)
 # con.commit()
 
-cur.execute("delete from person where name = :name", {"name": "gyul"})
-con.commit()
+# cur.execute("delete from person where name = :name", {"name": "gyul"})
+# con.commit()
+
+# 아래는 데이터베이스를 안전하게 종료하는 코드다
+# 두 코드의 순서를 바꾸어도 파이썬이 알아서 잘해준다
+# 하지만 가능하면 순서, 규칙을 지키는 것이 좋다
+cur.close()
+con.close()
