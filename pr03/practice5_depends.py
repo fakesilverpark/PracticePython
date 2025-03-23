@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Query, Depends
+from fastapi import FastAPI, Query, Depends, HTTPException
 
 app = FastAPI()
 
@@ -9,6 +9,16 @@ def user_dep(name: str = Query(...), gender: str = Query(...)):
 @app.get("/user")
 def get_user(user: dict = Depends(user_dep)) -> dict:
     return user
+
+# 2. 토큰 확인 후 권한 부여
+def check_admin(token: str = Query(...)):
+    if token == "secureToken":
+        return {"role": "admin"}
+    raise HTTPException(status_code=401, detail="invalid token")
+
+@app.get("/check_admin")
+def check_admin(user: dict = Depends(check_admin)):
+    return {"message" : "welcome", "user": user}
 
 if __name__ == "__main__":
     import uvicorn
