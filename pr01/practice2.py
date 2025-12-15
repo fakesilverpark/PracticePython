@@ -1,7 +1,5 @@
 from typing import List, Tuple, Dict, Optional, Union
 
-# def function_name(value: type) -> return_type:
-
 def add(a: int, b: int) -> int:
     return a + b
 
